@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddd80rfbvul5a"]
+
+[ext_resource type="Script" uid="uid://kalo5tol5fn8" path="res://Scripts/Frogger/frogger.gd" id="1_7hwb2"]
+[ext_resource type="Texture2D" uid="uid://um7ury66nsxq" path="res://Sprites/Frogger/frogger.png" id="1_b38hg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hwb2"]
+size = Vector2(14, 16)
+
+[node name="Frogger" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_7hwb2")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b38hg")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7hwb2")

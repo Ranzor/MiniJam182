@@ -49,7 +49,7 @@ position = Vector2(-152, 11)
 position = Vector2(-28, -34)
 
 [node name="PressurePlate" parent="." instance=ExtResource("4_3dryh")]
-position = Vector2(-238, -5)
+position = Vector2(-110, -5)
 toggle_plate = true
 
 [node name="PressurePlate2" parent="." instance=ExtResource("4_3dryh")]
