@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=3 uid="uid://duabm1vr0jir5"]
+
+[ext_resource type="PackedScene" uid="uid://kqny2g6obc8t" path="res://Scenes/ghost.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://ewdt730a8s3t" path="res://Scenes/frog.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://ci3xqtyjg4nhs" path="res://Scenes/floor.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cm2lwqdmsfgiy" path="res://Scenes/pressure_plate.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://c7l6h76p0pfdj" path="res://Scenes/heavy_door.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://6j5wa8jk67ke" path="res://Scenes/fragile_floor.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://dahjjjog88n4g" path="res://Scenes/timed_floor.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://b8jp6ky7v68ln" path="res://Scenes/switch.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://de65lvrxeipvq" path="res://Scenes/exit.tscn" id="9_h4fw4"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Ghost" parent="." groups=["ghost"] instance=ExtResource("1_ebmjs")]
+position = Vector2(-196, -56)
+collision_layer = 4
+
+[node name="Frog" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(449, 333)
+abilities = Array[int]([1])
+
+[node name="Frog2" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(-142, -5)
+frog_color_scheme = 2
+abilities = Array[int]([4])
+
+[node name="Frog3" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(816, 26)
+frog_color_scheme = 3
+abilities = Array[int]([6])
+
+[node name="Floor" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(453, 172)
+
+[node name="Floor5" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(453, 356)
+
+[node name="Floor6" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-106, 356)
+
+[node name="Floor4" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(1022, 44)
+
+[node name="Floor2" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-152, 11)
+
+[node name="Floor3" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-28, -34)
+
+[node name="PressurePlate" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(-238, -5)
+toggle_plate = true
+
+[node name="PressurePlate2" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(159, 91)
+
+[node name="HeavyDoor" parent="." node_paths=PackedStringArray("plate") instance=ExtResource("5_wowpa")]
+position = Vector2(-31, -11)
+collision_layer = 5
+collision_mask = 5
+plate = NodePath("../PressurePlate")
+
+[node name="HeavyDoor2" parent="." node_paths=PackedStringArray("plate") instance=ExtResource("5_wowpa")]
+position = Vector2(627, 148)
+collision_layer = 5
+collision_mask = 5
+plate = NodePath("../Switch")
+
+[node name="FragileFloor" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(264, 11)
+
+[node name="FragileFloor2" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(295, 11)
+
+[node name="FragileFloor3" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(327, 11)
+
+[node name="FragileFloor4" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(263, 72)
+
+[node name="FragileFloor5" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(294, 72)
+
+[node name="FragileFloor6" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(326, 72)
+
+[node name="FragileFloor7" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(263, 127)
+
+[node name="FragileFloor8" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(294, 127)
+
+[node name="FragileFloor9" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(326, 127)
+
+[node name="FragileFloor10" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(540, 108)
+
+[node name="FragileFloor11" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(571, 108)
+
+[node name="FragileFloor12" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(603, 108)
+
+[node name="FragileFloor13" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(635, 124)
+
+[node name="FragileFloor14" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(666, 124)
+
+[node name="FragileFloor15" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(698, 124)
+
+[node name="FragileFloor16" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(1007, 172)
+
+[node name="timed_floor" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(34, 338)
+
+[node name="timed_floor2" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(-16, 302)
+
+[node name="timed_floor3" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(34, 250)
+
+[node name="timed_floor4" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(-28, 203)
+
+[node name="timed_floor5" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(37, 172)
+
+[node name="Switch" parent="." instance=ExtResource("8_v158k")]
+position = Vector2(989, 156)
+
+[node name="Exit" parent="." instance=ExtResource("9_h4fw4")]
+position = Vector2(80, 148)
