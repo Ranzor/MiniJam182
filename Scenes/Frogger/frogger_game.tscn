@@ -1,12 +1,166 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3ly0vvbx4rrf"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ly0vvbx4rrf"]
 
 [ext_resource type="PackedScene" uid="uid://ddd80rfbvul5a" path="res://Scenes/Frogger/frogger.tscn" id="1_8c38d"]
+[ext_resource type="Texture2D" uid="uid://qjpej8ovsorc" path="res://Sprites/Frogger/frogger_level.png" id="2_58vaj"]
+[ext_resource type="Texture2D" uid="uid://07gh4lt6ltt3" path="res://Sprites/Frogger/frogger_level_end.png" id="2_tt1lf"]
+[ext_resource type="PackedScene" uid="uid://c65w65n23visa" path="res://Scenes/Frogger/frogger_car.tscn" id="3_lkdd5"]
+[ext_resource type="PackedScene" uid="uid://bghuwsncn6wac" path="res://Scenes/Frogger/frogger_truck.tscn" id="4_scfhx"]
+[ext_resource type="PackedScene" uid="uid://cjrs5ea6k4nmq" path="res://Scenes/Frogger/frogger_log.tscn" id="6_sqaml"]
+[ext_resource type="PackedScene" uid="uid://bkga5gci6x4pm" path="res://Scenes/Frogger/frogger_frogs.tscn" id="7_ikkv4"]
 
 [node name="FroggerGame" type="Node2D"]
-position = Vector2(-32, -240)
+
+[node name="level" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(352, 586)
+texture = ExtResource("2_58vaj")
+
+[node name="level2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(352, 484)
+texture = ExtResource("2_58vaj")
+
+[node name="level3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(352, 372)
+texture = ExtResource("2_tt1lf")
 
 [node name="Frogger" parent="." instance=ExtResource("1_8c38d")]
-position = Vector2(352, 592)
+z_index = 1
+position = Vector2(354, 578)
+collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(352, 480)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="frogger_Car" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(238, 561)
+
+[node name="frogger_Car5" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(357, 561)
+
+[node name="frogger_Car6" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(476, 561)
+
+[node name="frogger_Car3" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(306, 527)
+
+[node name="frogger_Car9" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(204, 527)
+
+[node name="frogger_Car8" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(442, 527)
+
+[node name="frogger_Car2" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(408, 544)
+
+[node name="Sprite2D" parent="frogger_Car2" index="0"]
+flip_h = true
+frame = 3
+
+[node name="frogger_Car7" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(503, 544)
+
+[node name="Sprite2D" parent="frogger_Car7" index="0"]
+flip_h = true
+frame = 3
+
+[node name="frogger_Car4" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(374, 510)
+
+[node name="Sprite2D" parent="frogger_Car4" index="0"]
+flip_h = true
+frame = 3
+
+[node name="frogger_Car10" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(476, 510)
+
+[node name="Sprite2D" parent="frogger_Car10" index="0"]
+flip_h = true
+frame = 3
+
+[node name="frogger_Car11" parent="." instance=ExtResource("3_lkdd5")]
+position = Vector2(221, 510)
+
+[node name="Sprite2D" parent="frogger_Car11" index="0"]
+flip_h = true
+frame = 3
+
+[node name="frogger_truck" parent="." instance=ExtResource("4_scfhx")]
+position = Vector2(476, 492.5)
+
+[node name="frogger_truck2" parent="." instance=ExtResource("4_scfhx")]
+position = Vector2(256, 492.5)
+
+[node name="frogger_truck4" parent="." instance=ExtResource("4_scfhx")]
+position = Vector2(187, 492.5)
+
+[node name="frogger_truck5" parent="." instance=ExtResource("4_scfhx")]
+position = Vector2(323, 492.5)
+
+[node name="frogger_truck3" parent="." instance=ExtResource("4_scfhx")]
+position = Vector2(408, 492.5)
+
+[node name="frogger_log" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(498, 449)
+
+[node name="frogger_log2" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(324, 449)
+
+[node name="frogger_log3" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(168, 449)
+
+[node name="frogger_frogs" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(187, 466)
+
+[node name="frogger_frogs2" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(283, 466)
+
+[node name="frogger_frogs3" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(386, 466)
+
+[node name="frogger_frogs4" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(485, 466)
+
+[node name="frogger_log4" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(550, 414)
+
+[node name="frogger_log5" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(376, 414)
+
+[node name="frogger_log6" parent="." instance=ExtResource("6_sqaml")]
+position = Vector2(220, 414)
+
+[node name="frogger_frogs5" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(239, 431)
+
+[node name="frogger_frogs6" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(335, 431)
+
+[node name="frogger_frogs7" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(438, 431)
+
+[node name="frogger_frogs8" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(537, 431)
+
+[node name="frogger_frogs9" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(198, 394)
+
+[node name="frogger_frogs10" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(294, 394)
+
+[node name="frogger_frogs11" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(397, 394)
+
+[node name="frogger_frogs12" parent="." instance=ExtResource("7_ikkv4")]
+position = Vector2(496, 394)
+
+[editable path="frogger_Car2"]
+[editable path="frogger_Car7"]
+[editable path="frogger_Car4"]
+[editable path="frogger_Car10"]
+[editable path="frogger_Car11"]

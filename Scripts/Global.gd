@@ -11,10 +11,10 @@ var current_possessed = null
 var ghost_scene = preload("res://Scenes/ghost.tscn")
 
 var current_colors = {
-	ColorScheme.GHOST: {primary = Color.WHITE, secondary = Color.BLACK},
-	ColorScheme.GREEN: {primary = Color.GREEN, secondary = Color.DARK_GREEN},
-	ColorScheme.YELLOW: {primary = Color.YELLOW, secondary = Color.DARK_GOLDENROD},
-	ColorScheme.RED: {primary = Color.RED, secondary = Color.DARK_RED}
+	ColorScheme.GHOST: {primary = Color("F0F0F0"), secondary = Color("303030")},
+	ColorScheme.GREEN: {primary = Color("6A994E"), secondary = Color("0F2009")},
+	ColorScheme.YELLOW: {primary = Color("FFE600"), secondary = Color("382E00")},
+	ColorScheme.RED: {primary = Color("D62828"), secondary = Color("260101")}
 }
 
 var color_scheme : ColorScheme = ColorScheme.GHOST:
@@ -28,6 +28,9 @@ const BASE_SPEED = 120
 const BASE_JUMP_FORCE = -300
 const GHOST_SPEED = 150
 var last_possession_time = 0
+
+func refresh_color_scheme():
+	color_scheme_changed
 
 func _process(_delta: float) -> void:
 	RenderingServer.set_default_clear_color(current_colors[color_scheme].secondary)

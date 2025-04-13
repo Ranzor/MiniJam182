@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duabm1vr0jir5"]
+[gd_scene load_steps=13 format=3 uid="uid://duabm1vr0jir5"]
 
 [ext_resource type="PackedScene" uid="uid://kqny2g6obc8t" path="res://Scenes/ghost.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://ewdt730a8s3t" path="res://Scenes/frog.tscn" id="2_qxrlw"]
@@ -9,12 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://dahjjjog88n4g" path="res://Scenes/timed_floor.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://b8jp6ky7v68ln" path="res://Scenes/switch.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://de65lvrxeipvq" path="res://Scenes/exit.tscn" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dodyyjpyhyts3" path="res://Scenes/color_platform.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://dertls10ebfuu" path="res://Scenes/moving_platform.tscn" id="11_o5yvi"]
+
+[sub_resource type="Curve2D" id="Curve2D_o5yvi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 23, -1, 0, 0, 0, 0, -126, 18)
+}
+point_count = 2
 
 [node name="Game" type="Node2D"]
 
 [node name="Ghost" parent="." groups=["ghost"] instance=ExtResource("1_ebmjs")]
 position = Vector2(-196, -56)
-collision_layer = 4
 
 [node name="Frog" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(449, 333)
@@ -29,6 +36,7 @@ abilities = Array[int]([4])
 position = Vector2(816, 26)
 frog_color_scheme = 3
 abilities = Array[int]([6])
+flip = true
 
 [node name="Floor" parent="." instance=ExtResource("3_wrm1d")]
 position = Vector2(453, 172)
@@ -52,20 +60,17 @@ position = Vector2(-28, -34)
 position = Vector2(-110, -5)
 toggle_plate = true
 
-[node name="PressurePlate2" parent="." instance=ExtResource("4_3dryh")]
-position = Vector2(159, 91)
-
-[node name="HeavyDoor" parent="." node_paths=PackedStringArray("plate") instance=ExtResource("5_wowpa")]
+[node name="HeavyDoor" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("5_wowpa")]
 position = Vector2(-31, -11)
 collision_layer = 5
 collision_mask = 5
-plate = NodePath("../PressurePlate")
+trigger = NodePath("../PressurePlate")
 
-[node name="HeavyDoor2" parent="." node_paths=PackedStringArray("plate") instance=ExtResource("5_wowpa")]
+[node name="HeavyDoor2" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("5_wowpa")]
 position = Vector2(627, 148)
 collision_layer = 5
 collision_mask = 5
-plate = NodePath("../Switch")
+trigger = NodePath("../Switch")
 
 [node name="FragileFloor" parent="." instance=ExtResource("6_i6g32")]
 position = Vector2(264, 11)
@@ -135,3 +140,18 @@ position = Vector2(989, 156)
 
 [node name="Exit" parent="." instance=ExtResource("9_h4fw4")]
 position = Vector2(80, 148)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("10_ldgsr")]
+position = Vector2(438, 156)
+required_schemes = Array[int]([0, 1])
+
+[node name="MovingPlatform" parent="." instance=ExtResource("11_o5yvi")]
+position = Vector2(485, 109)
+curve = SubResource("Curve2D_o5yvi")
+active_color = 3
+
+[node name="PathFollow2D" parent="MovingPlatform" index="0"]
+position = Vector2(-125.09, 17.884)
+progress = 149.013
+
+[editable path="MovingPlatform"]

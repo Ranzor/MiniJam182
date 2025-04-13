@@ -1,19 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddd80rfbvul5a"]
+[gd_scene load_steps=5 format=3 uid="uid://ddd80rfbvul5a"]
 
 [ext_resource type="Script" uid="uid://kalo5tol5fn8" path="res://Scripts/Frogger/frogger.gd" id="1_7hwb2"]
 [ext_resource type="Texture2D" uid="uid://um7ury66nsxq" path="res://Sprites/Frogger/frogger.png" id="1_b38hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hwb2"]
-size = Vector2(14, 16)
+size = Vector2(15, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18b8d"]
+size = Vector2(15, 15)
 
 [node name="Frogger" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_7hwb2")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.941176, 0.941176, 0.941176, 1)
+position = Vector2(8.5, 8.5)
 texture = ExtResource("1_b38hg")
-hframes = 2
-frame = 1
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, 8.25)
 shape = SubResource("RectangleShape2D_7hwb2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.5, 8.5)
+shape = SubResource("RectangleShape2D_18b8d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

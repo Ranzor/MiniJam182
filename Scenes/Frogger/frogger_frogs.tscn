@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkga5gci6x4pm"]
+
+[ext_resource type="Texture2D" uid="uid://um7ury66nsxq" path="res://Sprites/Frogger/frogger.png" id="1_ddc4q"]
+[ext_resource type="Script" uid="uid://c0sw1p6xpkoay" path="res://Scripts/Frogger/frogger_frogs.gd" id="1_otqio"]
+
+[node name="frogger_frogs" type="Node2D" node_paths=PackedStringArray("sprites")]
+script = ExtResource("1_otqio")
+sprites = [NodePath("Sprite2D"), NodePath("Sprite2D3"), NodePath("Sprite2D2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ddc4q")
+hframes = 6
+frame = 4
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(42, 0)
+texture = ExtResource("1_ddc4q")
+hframes = 6
+frame = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(20, 0)
+texture = ExtResource("1_ddc4q")
+hframes = 6
+frame = 5

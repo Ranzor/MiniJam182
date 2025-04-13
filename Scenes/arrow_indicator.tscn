@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8vxrt454tyx3"]
+
+[ext_resource type="Script" uid="uid://b6w8hiljcfdps" path="res://Scripts/arrow_indicator.gd" id="1_ba58k"]
+[ext_resource type="Texture2D" uid="uid://bqfcnlqrv51wy" path="res://Sprites/arrow_indicator.png" id="1_uc67i"]
+
+[node name="ArrowIndicator" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_ba58k")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uc67i")
+
+[node name="Timer" type="Timer" parent="."]

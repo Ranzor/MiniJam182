@@ -4,9 +4,19 @@ const SPEED = 100
 @export var anim : AnimationPlayer
 @export var sprite : Sprite2D
 @export var camera : Camera2D
+@export var arrow_scene : PackedScene
+
+@export var trail_length = 1
+@export var trail_spacing = 5.0
+
+@export var ghost_trail_scene : PackedScene
+
+var active_arrows : Array[Node] = []
 
 var can_possess = false
 var possess_target : CharacterBody2D
+
+var arrow_setup = false
 
 
 func _ready() -> void:
@@ -18,8 +28,20 @@ func _ready() -> void:
 	update_color()
 
 func _physics_process(delta: float) -> void:
-		if Global.state == Global.PossessionState.GHOST:
-			handle_ghost_movement(delta)
+	if Global.state == Global.PossessionState.GHOST:
+		handle_ghost_movement(delta)
+		
+	if !arrow_setup:
+		update_frog_indicators()
+		
+	if Global.state == Global.PossessionState.GHOST:
+		if Engine.get_frames_drawn() % int(trail_spacing) == 0:
+			var trail = ghost_trail_scene.instantiate()
+			trail.modulate.a = 0.4
+			get_parent().add_child(trail)
+			trail.position = position
+			trail.frame = sprite.frame
+			trail.flip_h = sprite.flip_h
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("frog"): ## TODO: and Input.is_action_just_pressed("possess"): AKA Add state for button prompt
@@ -60,6 +82,8 @@ func possess_frog(frog):
 	frog.possessed = true
 	frog.camera.make_current()
 	
+
+	
 	queue_free()
 
 
@@ -71,3 +95,26 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("possess") and can_possess:
 		possess_frog(possess_target)
+		
+func update_frog_indicators():
+	for arrow in active_arrows:
+		arrow.queue_free()
+		
+	active_arrows.clear()
+	
+	if Global.state != Global.PossessionState.GHOST:
+		return
+		
+	var frogs = get_tree().get_nodes_in_group("frog")
+	
+	for frog in frogs:
+		if frog.possessed:
+			continue
+		
+		var arrow = arrow_scene.instantiate()
+		arrow.target_frog = frog
+		arrow.ghost = self
+		get_parent().add_child(arrow)
+		active_arrows.append(arrow)
+		arrow.sprite.modulate = frog.sprite.modulate
+	arrow_setup = true

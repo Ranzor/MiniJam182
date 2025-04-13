@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1xnni1rlem3a"]
+
+[ext_resource type="Texture2D" uid="uid://ce1j1mqikutbx" path="res://Sprites/Ghost.png" id="1_gbhgw"]
+[ext_resource type="Script" uid="uid://dfdntlngi2sa0" path="res://Scripts/ghost_trail.gd" id="2_wfi1g"]
+
+[node name="GhostTrail" type="Sprite2D"]
+texture = ExtResource("1_gbhgw")
+hframes = 2
+script = ExtResource("2_wfi1g")

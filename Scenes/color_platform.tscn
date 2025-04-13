@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dodyyjpyhyts3"]
+
+[ext_resource type="Script" uid="uid://jf3pbawyxyb4" path="res://Scripts/ColorSensitive.gd" id="1_wsleq"]
+[ext_resource type="Texture2D" uid="uid://bn8j6xp70l0ac" path="res://Sprites/fragile_floor.png" id="2_mx2w6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fr0m"]
+size = Vector2(32, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" node_paths=PackedStringArray("sprite", "col")]
+script = ExtResource("1_wsleq")
+required_schemes = Array[int]([0])
+sprite = NodePath("Sprite2D")
+col = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mx2w6")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2fr0m")

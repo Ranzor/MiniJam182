@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrs5ea6k4nmq"]
+
+[ext_resource type="Texture2D" uid="uid://b6a56vtt4n8rj" path="res://Sprites/Frogger/frogger_logs.png" id="1_2stuu"]
+[ext_resource type="Script" uid="uid://c13qmfovkhw7s" path="res://Scripts/Frogger/frogger_log.gd" id="2_vno4g"]
+
+[node name="frogger_log" type="Sprite2D"]
+texture = ExtResource("1_2stuu")
+hframes = 2
+script = ExtResource("2_vno4g")

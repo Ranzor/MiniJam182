@@ -13,17 +13,22 @@ extends CharacterBody2D
 @export var anim : AnimationPlayer
 @export var sprite : Sprite2D
 
+var on_platform = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var possessed = false
 var current_jumps = 1
 var is_heavy = false
 var grabbed_object : RigidBody2D = null
 var is_attacking = false
+@export var flip = false
 
 @onready var tongue_line = %TongueLine
 @onready var tongue_end = %TongueEnd
 
 func _ready() -> void:
+	if flip:
+		sprite.flip_h = true
+	anim.speed_scale = .1
 	LevelManager.register_frog(self)
 	sprite.modulate = Global.current_colors[frog_color_scheme].primary
 	tongue_end.modulate = Global.current_colors[frog_color_scheme].primary
@@ -52,7 +57,7 @@ func _process(delta: float) -> void:
 			Global.color_scheme = Global.ColorScheme.GHOST
 			Global.current_possessed = null
 			possessed = false
-			anim.play("idle")
+			anim.speed_scale = .1
 			
 			var spawn = Global.ghost_scene.instantiate()
 			spawn.global_position = global_position + Vector2(0,-16)
@@ -61,7 +66,6 @@ func _process(delta: float) -> void:
 	else:
 		velocity.y += gravity * delta
 		velocity.x = 0
-		## TODO: Add friction when unpossessed from the airas
 		move_and_slide()
 
 func handle_movement(delta):
@@ -76,8 +80,10 @@ func handle_movement(delta):
 	
 	if velocity.x != 0:
 		anim.play("move")
+		anim.speed_scale = 1
 	elif not is_attacking:
 		anim.play("idle")
+		anim.speed_scale = .1
 	pass
 	
 	move_and_slide()

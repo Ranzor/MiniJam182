@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bghuwsncn6wac"]
+
+[ext_resource type="Script" uid="uid://cxl14gpqyvur6" path="res://Scripts/Frogger/frogger_truck.gd" id="1_22r6o"]
+[ext_resource type="Texture2D" uid="uid://c2vx0f21yfedc" path="res://Sprites/Frogger/frogger_truck.png" id="1_nmvyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22r6o"]
+size = Vector2(28, 16)
+
+[node name="frogger_truck" type="CharacterBody2D"]
+script = ExtResource("1_22r6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(13, 8)
+texture = ExtResource("1_nmvyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 8)
+shape = SubResource("RectangleShape2D_22r6o")
