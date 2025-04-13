@@ -7,7 +7,6 @@ extends StaticBody2D
 func _ready() -> void:
 	if trigger:
 		trigger.connect("pressed",open)
-		trigger.connect("released",closed)
 	closed()
 	
 func _process(delta: float) -> void:

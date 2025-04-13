@@ -5,6 +5,7 @@ signal game_over
 
 var living_frogs = []
 var frogs_at_exit = []
+var next_level : PackedScene
 
 func register_frog(frog) -> void:
 	if not frog in living_frogs:
@@ -13,24 +14,26 @@ func register_frog(frog) -> void:
 func unregister_frog(frog) -> void:
 	if frog in living_frogs:
 		living_frogs.erase(frog)
-		check_victory()		
+		check_victory(next_level)		
 	if frog in frogs_at_exit:
 		frogs_at_exit.erase(frog)
 
-func frog_reached_exit(frog) -> void:
+func frog_reached_exit(frog, next) -> void:
 	print(frog)
 	if not frog in frogs_at_exit:		
 		frogs_at_exit.append(frog)
 		print(frogs_at_exit)
-		check_victory()
+		if next: next_level = next
+		check_victory(next_level)
 
 func frog_left_exit(frog) -> void:
 	if frog in frogs_at_exit:
 		frogs_at_exit.erase(frog)
 	
-func check_victory() -> void:
+func check_victory(next_level : PackedScene) -> void:
 	if living_frogs.size() > 0 and living_frogs.size() == frogs_at_exit.size():
 		level_completed.emit()
-		print("Victory!")
+		if next_level:
+			get_tree().change_scene_to_packed(next_level)
 	elif living_frogs.size() <= 0:
 		game_over.emit()

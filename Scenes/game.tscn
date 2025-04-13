@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://duabm1vr0jir5"]
+[gd_scene load_steps=16 format=3 uid="uid://duabm1vr0jir5"]
 
 [ext_resource type="PackedScene" uid="uid://kqny2g6obc8t" path="res://Scenes/ghost.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://dgyy3t2fdpb7r" path="res://Scripts/game.gd" id="1_rku1e"]
 [ext_resource type="PackedScene" uid="uid://ewdt730a8s3t" path="res://Scenes/frog.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://ci3xqtyjg4nhs" path="res://Scenes/floor.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://cm2lwqdmsfgiy" path="res://Scenes/pressure_plate.tscn" id="4_3dryh"]
@@ -9,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dahjjjog88n4g" path="res://Scenes/timed_floor.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://b8jp6ky7v68ln" path="res://Scenes/switch.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://de65lvrxeipvq" path="res://Scenes/exit.tscn" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dkby5pb3sxrm5" path="res://Scenes/end_menu.tscn" id="10_1phco"]
 [ext_resource type="PackedScene" uid="uid://dodyyjpyhyts3" path="res://Scenes/color_platform.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://dertls10ebfuu" path="res://Scenes/moving_platform.tscn" id="11_o5yvi"]
+[ext_resource type="AudioStream" uid="uid://c2qvgji1kgnr7" path="res://Resources/main_theme.wav" id="13_rfjv2"]
 
 [sub_resource type="Curve2D" id="Curve2D_o5yvi"]
 _data = {
@@ -140,6 +143,7 @@ position = Vector2(989, 156)
 
 [node name="Exit" parent="." instance=ExtResource("9_h4fw4")]
 position = Vector2(80, 148)
+next_level = ExtResource("10_1phco")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("10_ldgsr")]
 position = Vector2(438, 156)
@@ -153,5 +157,15 @@ active_color = 3
 [node name="PathFollow2D" parent="MovingPlatform" index="0"]
 position = Vector2(-125.09, 17.884)
 progress = 149.013
+
+[node name="FadeIn" type="Node2D" parent="."]
+script = ExtResource("1_rku1e")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="AudioListener2D"]
+stream = ExtResource("13_rfjv2")
+volume_db = -15.0
+autoplay = true
 
 [editable path="MovingPlatform"]

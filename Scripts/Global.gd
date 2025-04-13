@@ -29,6 +29,8 @@ const BASE_JUMP_FORCE = -300
 const GHOST_SPEED = 150
 var last_possession_time = 0
 
+var frogger_dead = false
+
 func refresh_color_scheme():
 	color_scheme_changed
 

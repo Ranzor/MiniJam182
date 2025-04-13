@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ly0vvbx4rrf"]
+[gd_scene load_steps=9 format=3 uid="uid://b3ly0vvbx4rrf"]
 
 [ext_resource type="PackedScene" uid="uid://ddd80rfbvul5a" path="res://Scenes/Frogger/frogger.tscn" id="1_8c38d"]
 [ext_resource type="Texture2D" uid="uid://qjpej8ovsorc" path="res://Sprites/Frogger/frogger_level.png" id="2_58vaj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bghuwsncn6wac" path="res://Scenes/Frogger/frogger_truck.tscn" id="4_scfhx"]
 [ext_resource type="PackedScene" uid="uid://cjrs5ea6k4nmq" path="res://Scenes/Frogger/frogger_log.tscn" id="6_sqaml"]
 [ext_resource type="PackedScene" uid="uid://bkga5gci6x4pm" path="res://Scenes/Frogger/frogger_frogs.tscn" id="7_ikkv4"]
+[ext_resource type="AudioStream" uid="uid://d3mx7srfr3boy" path="res://Resources/frogger_track.wav" id="8_ty3r2"]
 
 [node name="FroggerGame" type="Node2D"]
 
@@ -158,6 +159,14 @@ position = Vector2(397, 394)
 
 [node name="frogger_frogs12" parent="." instance=ExtResource("7_ikkv4")]
 position = Vector2(496, 394)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioListener2D"]
+stream = ExtResource("8_ty3r2")
+volume_db = -10.0
+autoplay = true
+panning_strength = 0.0
 
 [editable path="frogger_Car2"]
 [editable path="frogger_Car7"]

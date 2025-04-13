@@ -2,8 +2,13 @@ extends CharacterBody2D
 @export var sprite : Sprite2D
 var move_distance = 17
 var can_move = true
+@export var transition : PackedScene
+@export var audio : AudioStreamPlayer2D
+@export var jmp_snd : AudioStreamWAV
+@export var hit_snd : AudioStreamWAV
 
 func _process(delta: float) -> void:
+	can_move = !Global.frogger_dead
 	if global_position.y <= 495:
 		can_move = false
 
@@ -42,13 +47,29 @@ func move(direction : Vector2) -> void:
 			sprite.rotation_degrees = 90
 			sprite.flip_h = false
 	global_position += direction * move_distance
+	audio.stream = jmp_snd
+	audio.play()
 	await get_tree().create_timer(0.1).timeout
 	can_move = true
-	print(global_position.y)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("DEAD DUUUUD")
-	## TODO: Animation to transition to game
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	on_death_trigger()
+	
+func on_death_trigger():
+	Global.frogger_dead = true
+	audio.stream = hit_snd
+	audio.play()
+	var tween = create_tween()
+	var ghost = transition.instantiate()
+	ghost.global_position = global_position
+	get_parent().add_child(ghost)
+	
+	tween.tween_method(_flicker_sprite, 0.0, 1.0, 1.0)
+	await tween.finished
+	queue_free()
+	
+	
+func _flicker_sprite(progress: float):
+	sprite.visible = fmod(progress * 10, 2.0) < 1.0
+	sprite.modulate.a = 1.0 - progress

@@ -20,6 +20,7 @@ var arrow_setup = false
 
 
 func _ready() -> void:
+	#Engine.time_scale = 1.0
 	if camera:
 		camera.make_current()
 		CameraManager.current_camera = camera

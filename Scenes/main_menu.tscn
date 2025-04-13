@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcbceebrgag52"]
+
+[ext_resource type="FontFile" uid="uid://dgrovhjhn072l" path="res://Resources/Minecraft.ttf" id="1_28flt"]
+[ext_resource type="Script" uid="uid://i1pm6ljlkmyv" path="res://Scripts/start_game.gd" id="2_48xlc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28flt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.941176, 0.941176, 0.941176, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.941176, 0.941176, 0.941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.941176, 0.941176, 0.941176, 1)
+
+[sub_resource type="Theme" id="Theme_48xlc"]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_28flt")
+Button/styles/focus = SubResource("StyleBoxEmpty_28flt")
+Button/styles/hover = SubResource("StyleBoxFlat_48xlc")
+Button/styles/normal = SubResource("StyleBoxFlat_28flt")
+Button/styles/pressed = SubResource("StyleBoxFlat_1ehe0")
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_28flt")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -97.0
+offset_right = 182.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 32
+text = "GameName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -9.0
+offset_right = 46.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_48xlc")
+text = "Start Game"
+script = ExtResource("2_48xlc")
+
+[connection signal="pressed" from="StartGame" to="StartGame" method="_on_pressed"]
