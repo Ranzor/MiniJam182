@@ -7,7 +7,11 @@ var can_move = true
 @export var jmp_snd : AudioStreamWAV
 @export var hit_snd : AudioStreamWAV
 
-func _process(delta: float) -> void:
+
+func _ready() -> void:
+	Sound.audio.play()
+
+func _process(_delta: float) -> void:
 	can_move = !Global.frogger_dead
 	if global_position.y <= 495:
 		can_move = false
@@ -53,7 +57,7 @@ func move(direction : Vector2) -> void:
 	can_move = true
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	on_death_trigger()
 	
 func on_death_trigger():

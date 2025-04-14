@@ -58,6 +58,7 @@ grow_vertical = 2
 color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(0.941176, 0.941176, 0.941176, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_28flt")
 theme_override_font_sizes/font_size = 32
-text = "GameName"
+text = "Phantom Frogger"
 horizontal_alignment = 1
 vertical_alignment = 1
 

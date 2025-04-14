@@ -9,7 +9,7 @@ func _ready() -> void:
 		trigger.connect("pressed",open)
 	closed()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.modulate = Global.current_colors[Global.color_scheme].primary
 
 func open():

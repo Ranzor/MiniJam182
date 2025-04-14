@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=4 uid="uid://8052dxoxhmyx"]
+
+[ext_resource type="TileSet" uid="uid://da1r00n7rl0lb" path="res://Scenes/Levels/tiles.tres" id="1_6grq2"]
+[ext_resource type="Script" uid="uid://mxrkebgqqpw2" path="res://Scripts/tile_map_layer.gd" id="2_gsxik"]
+[ext_resource type="PackedScene" uid="uid://dertls10ebfuu" path="res://Scenes/moving_platform.tscn" id="2_vwhew"]
+[ext_resource type="PackedScene" uid="uid://cm2lwqdmsfgiy" path="res://Scenes/pressure_plate.tscn" id="3_jqrsn"]
+[ext_resource type="PackedScene" uid="uid://kqny2g6obc8t" path="res://Scenes/ghost.tscn" id="4_vwhew"]
+[ext_resource type="PackedScene" uid="uid://ewdt730a8s3t" path="res://Scenes/frog.tscn" id="5_jqrsn"]
+[ext_resource type="PackedScene" uid="uid://6j5wa8jk67ke" path="res://Scenes/fragile_floor.tscn" id="6_h0uxt"]
+[ext_resource type="PackedScene" uid="uid://de65lvrxeipvq" path="res://Scenes/exit.tscn" id="7_keyqw"]
+[ext_resource type="PackedScene" uid="uid://bjdbik27rasmv" path="res://Scenes/Levels/tutorial.tscn" id="8_gsxik"]
+[ext_resource type="PackedScene" uid="uid://qclexkwo23hr" path="res://Scenes/Levels/level_5.tscn" id="9_gsxik"]
+
+[sub_resource type="Curve2D" id="Curve2D_jqrsn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192)
+}
+point_count = 2
+
+[node name="Level4" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAQAAQAAAABAAAAAAARAAQAAAABAAAAAAASAAQAAAABAAAAAAATAAQAAAABAAAAAAAUAAQAAAABAAAAAAAVAAQAAAABAAAAAAANABMAAAADAAAAAAAMABMAAAABAAAAAAALABMAAAABAAAAAAAKABMAAAABAAAAAAAJABMAAAABAAAAAAAIABMAAAABAAAAAAAHABMAAAABAAAAAAAGABMAAAABAAAAAAAFABMAAAABAAAAAAAEABMAAAABAAAAAAADABMAAAABAAAAAAACABMAAAABAAAAAAABABMAAAABAAAAAAAAABIAAAAHAAAAAAAAABEAAAAHAAAAAAAAABAAAAAHAAAAAAAAAA8AAAAHAAAAAAAAAA4AAAAHAAAAAAAAAA0AAAAHAAAAAAAAAAwAAAAHAAAAAAAAAAsAAAAHAAAAAAAAAAoAAAAHAAAAAAAAAAkAAAAHAAAAAAAAAAgAAAAHAAAAAAAAAAcAAAAHAAAAAAAAAAYAAAAHAAAAAAAAAAUAAAAHAAAAAAAAAAQAAAAHAAAAAAAAAAMAAAAHAAAAAAAAAAIAAAAHAAAAAAAAAAEAAAAHAAAAAAAAAAAAAAAHAAAAAAAAAP//AAAHAAAAAAAAAP7/AAAHAAAAAAAAAP3/AAAHAAAAAAABAPz/AAAIAAAAAAACAPz/AAAIAAAAAAADAPz/AAAIAAAAAAAEAPz/AAAIAAAAAAAFAPz/AAAIAAAAAAAGAPz/AAAIAAAAAAAHAPz/AAAIAAAAAAAIAPz/AAAIAAAAAAAJAPz/AAAIAAAAAAAKAPz/AAAIAAAAAAALAPz/AAAIAAAAAAAMAPz/AAAIAAAAAAANAPz/AAAIAAAAAAAOAPz/AAAIAAAAAAAPAPz/AAAIAAAAAAAQAPz/AAAIAAAAAAARAPz/AAAIAAAAAAASAPz/AAAIAAAAAAATAPz/AAAIAAAAAAAUAPz/AAAIAAAAAAAVAPz/AAAIAAAAAAAWAPz/AAAIAAAAAAAXAPz/AAAIAAAAAAAYAPz/AAAIAAAAAAAZAPz/AAAIAAAAAAAaAPz/AAAIAAAAAAAbAPz/AAAIAAAAAAAcAPz/AAAIAAAAAAAdAPz/AAAIAAAAAAAeAPz/AAAIAAAAAAAfAPz/AAAIAAAAAAAgAPz/AAAIAAAAAAAhAPz/AAAIAAAAAAAiAPz/AAAIAAAAAAANABQAAAAHAAAAAAANABUAAAAHAAAAAAAOABYAAAABAAAAAAAPABYAAAABAAAAAAAQABYAAAABAAAAAAARABYAAAABAAAAAAASABYAAAABAAAAAAATABYAAAABAAAAAAAUABYAAAABAAAAAAAVABYAAAABAAAAAAAWABYAAAABAAAAAAAXABYAAAABAAAAAAAYABYAAAABAAAAAAAZABYAAAABAAAAAAAWAAQAAAABAAAAAAAXAAQAAAABAAAAAAAYAAQAAAABAAAAAAAdAAsAAAABAAAAAAAeAAsAAAABAAAAAAAfAAsAAAABAAAAAAAgAAsAAAABAAAAAAAhAAsAAAABAAAAAAAiAAsAAAABAAAAAAAjAAsAAAABAAAAAAAkAAsAAAABAAAAAAAlAAsAAAABAAAAAAAmAAsAAAABAAAAAAAnAAsAAAABAAAAAAAcAAsAAAABAAAAAAAaABYAAAABAAAAAAAbABUAAAAGAAAAAAAbABQAAAAGAAAAAAAbABMAAAAGAAAAAAAbABIAAAAGAAAAAAAbABEAAAAGAAAAAAAbABAAAAAGAAAAAAAbAA8AAAAGAAAAAAAbAA4AAAAGAAAAAAAbAA0AAAAGAAAAAAAbAAwAAAAGAAAAAAAbAAsAAAAFAAAAAAAZAAQAAAABAAAAAAAaAAQAAAADAAAAAAAaAAUAAAAHAAAAAAAaAAYAAAAHAAAAAAAaAAcAAAAHAAAAAAAaAAgAAAAHAAAAAAAaAAkAAAAHAAAAAAAaAAoAAAAHAAAAAAAfAAQAAAAEAAAAAAAgAAQAAAAAAAAAAAAhAAQAAAAAAAAAAAAiAAQAAAACAAAAAAAjAAMAAAAJAAAAAAAjAAIAAAAGAAAAAAAjAAEAAAAGAAAAAAAjAAAAAAAGAAAAAAAjAP//AAAGAAAAAAAjAP7/AAAGAAAAAAAjAP3/AAAGAAAAAAAkAAMAAAAIAAAAAAAlAAMAAAAIAAAAAAAmAAMAAAAIAAAAAAAnAAMAAAAIAAAAAAAoAAUAAAAGAAAAAAAoAAQAAAAGAAAAAAAoAAYAAAAGAAAAAAAoAAcAAAAGAAAAAAAoAAgAAAAGAAAAAAAoAAkAAAAGAAAAAAAoAAoAAAAGAAAAAAA=")
+tile_set = ExtResource("1_6grq2")
+script = ExtResource("2_gsxik")
+
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("trigger") instance=ExtResource("2_vwhew")]
+position = Vector2(240, 72)
+curve = SubResource("Curve2D_jqrsn")
+trigger = NodePath("../PressurePlate")
+is_moving = false
+
+[node name="PressurePlate" parent="." instance=ExtResource("3_jqrsn")]
+position = Vector2(299, 56)
+toggle_plate = true
+
+[node name="Ghost" parent="." instance=ExtResource("4_vwhew")]
+position = Vector2(270, 39)
+
+[node name="Frog" parent="." instance=ExtResource("5_jqrsn")]
+position = Vector2(145, 56)
+frog_color_scheme = 2
+abilities = Array[int]([4])
+
+[node name="Frog2" parent="." instance=ExtResource("5_jqrsn")]
+position = Vector2(90, 296)
+abilities = Array[int]([1])
+
+[node name="FragileFloor" parent="." instance=ExtResource("6_h0uxt")]
+position = Vector2(448, 72)
+
+[node name="FragileFloor2" parent="." instance=ExtResource("6_h0uxt")]
+position = Vector2(480, 72)
+
+[node name="Exit" parent="." instance=ExtResource("7_keyqw")]
+position = Vector2(620, 158)
+next_level = ExtResource("9_gsxik")
+
+[node name="Label" parent="." instance=ExtResource("8_gsxik")]
+offset_left = 132.0
+offset_top = 2.0
+offset_right = 488.0
+offset_bottom = 25.0
+text = "Triggers can help get some platforms moving"
+
+[node name="Label3" parent="." instance=ExtResource("8_gsxik")]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 568.0
+offset_bottom = 120.0
+text = "Press [E] To Leave frog"
+
+[node name="TextureRect" parent="Label3" index="0"]
+offset_left = -129.0
+offset_top = -36.5
+offset_right = -89.0
+offset_bottom = 3.5
+flip_v = false
+
+[node name="Label2" parent="." instance=ExtResource("8_gsxik")]
+offset_left = 458.0
+offset_top = 201.0
+offset_right = 814.0
+offset_bottom = 224.0
+text = "Get all frogs to the exit"
+
+[node name="TextureRect" parent="Label2" index="0"]
+offset_left = -25.0
+offset_top = -36.5
+offset_right = 15.0
+offset_bottom = 3.5
+flip_v = false
+
+[editable path="MovingPlatform"]
+[editable path="Label"]
+[editable path="Label3"]
+[editable path="Label2"]

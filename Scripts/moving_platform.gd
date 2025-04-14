@@ -13,6 +13,7 @@ var riders = []
 
 var direction = 1
 @export var is_moving = true
+@export var one_shot = false
 var last_position : Vector2
 
 func _ready() -> void:
@@ -25,7 +26,8 @@ func _ready() -> void:
 		queue_redraw()
 		
 func _process(delta: float) -> void:
-	if !is_moving || Global.color_scheme != active_color:
+	sprite.modulate = Global.current_colors[Global.color_scheme].primary
+	if !is_moving:
 		return
 
 	var prev_position = path_follow.global_position
@@ -37,6 +39,10 @@ func _process(delta: float) -> void:
 		rider.global_position += delta_move
 	
 	if path_follow.progress_ratio >= 1.0:
+		if one_shot:
+			is_moving = false
+			direction = 0
+			return
 		if pause_at_ends:
 			is_moving = false
 			await get_tree().create_timer(0.5).timeout
@@ -44,6 +50,10 @@ func _process(delta: float) -> void:
 		direction = -1 if pause_at_ends else 0
 		
 	elif path_follow.progress_ratio <= 0.0:
+		if one_shot:
+			is_moving = false
+			direction = 0
+			return
 		if pause_at_ends:
 			is_moving = false
 			await get_tree().create_timer(0.5).timeout
@@ -62,7 +72,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		riders.erase(body)
 		
 func move():
+	print("Move")
 	is_moving = true
+	print(is_moving)
 	
 func stop():
 	is_moving = false

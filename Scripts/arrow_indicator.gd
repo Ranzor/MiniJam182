@@ -9,7 +9,7 @@ var target_frog : Node2D
 var ghost : Node2D
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !target_frog || !ghost:
 		queue_free()
 		return

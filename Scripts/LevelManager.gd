@@ -30,10 +30,13 @@ func frog_left_exit(frog) -> void:
 	if frog in frogs_at_exit:
 		frogs_at_exit.erase(frog)
 	
-func check_victory(next_level : PackedScene) -> void:
+func check_victory(next : PackedScene) -> void:
 	if living_frogs.size() > 0 and living_frogs.size() == frogs_at_exit.size():
 		level_completed.emit()
-		if next_level:
-			get_tree().change_scene_to_packed(next_level)
+		if next:
+			Global.reset_possession_state()
+			living_frogs.clear()
+			frogs_at_exit.clear()
+			get_tree().change_scene_to_packed(next)
 	elif living_frogs.size() <= 0:
 		game_over.emit()

@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=4 uid="uid://b2xr0ubblyoi6"]
+
+[ext_resource type="TileSet" uid="uid://da1r00n7rl0lb" path="res://Scenes/Levels/tiles.tres" id="1_6tcp3"]
+[ext_resource type="PackedScene" uid="uid://ewdt730a8s3t" path="res://Scenes/frog.tscn" id="2_nfly3"]
+[ext_resource type="Script" uid="uid://mxrkebgqqpw2" path="res://Scripts/tile_map_layer.gd" id="2_yy6i0"]
+[ext_resource type="PackedScene" uid="uid://kqny2g6obc8t" path="res://Scenes/ghost.tscn" id="3_nfly3"]
+[ext_resource type="PackedScene" uid="uid://dahjjjog88n4g" path="res://Scenes/timed_floor.tscn" id="4_t8c31"]
+[ext_resource type="PackedScene" uid="uid://de65lvrxeipvq" path="res://Scenes/exit.tscn" id="5_rc141"]
+[ext_resource type="PackedScene" uid="uid://bjdbik27rasmv" path="res://Scenes/Levels/tutorial.tscn" id="7_167vu"]
+[ext_resource type="PackedScene" uid="uid://8052dxoxhmyx" path="res://Scenes/Levels/level_4.tscn" id="7_x1k1j"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("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")
+tile_set = ExtResource("1_6tcp3")
+script = ExtResource("2_yy6i0")
+
+[node name="Frog" parent="." instance=ExtResource("2_nfly3")]
+position = Vector2(461, 152)
+abilities = Array[int]([1])
+flip = true
+
+[node name="Ghost" parent="." instance=ExtResource("3_nfly3")]
+position = Vector2(379, 50)
+
+[node name="timed_floor" parent="." instance=ExtResource("4_t8c31")]
+position = Vector2(-240, 56)
+
+[node name="timed_floor2" parent="." instance=ExtResource("4_t8c31")]
+position = Vector2(-384, 56)
+
+[node name="Exit" parent="." instance=ExtResource("5_rc141")]
+position = Vector2(-576, 31)
+next_level = ExtResource("7_x1k1j")
+
+[node name="Label" parent="." instance=ExtResource("7_167vu")]
+offset_left = 253.0
+offset_top = 130.0
+offset_right = 471.0
+offset_bottom = 153.0
+text = "[W] To Jump"
+
+[node name="TextureRect" parent="Label" index="0"]
+offset_left = -72.0
+offset_top = -33.5
+offset_right = -32.0
+offset_bottom = 6.5
+flip_v = false
+
+[node name="Label2" parent="." instance=ExtResource("7_167vu")]
+offset_left = 173.0
+offset_top = -8.0
+offset_right = 391.0
+offset_bottom = 15.0
+text = "[W] In Air to Double Jump"
+
+[node name="TextureRect" parent="Label2" index="0"]
+offset_left = -22.0
+offset_top = 8.5
+offset_right = 18.0
+offset_bottom = 48.5
+
+[node name="Label3" parent="." instance=ExtResource("7_167vu")]
+offset_left = -162.0
+offset_top = -21.0
+offset_right = 56.0
+offset_bottom = 2.0
+text = "[W] In Air to Double Jump"
+
+[node name="TextureRect" parent="Label3" index="0"]
+offset_left = -22.0
+offset_top = 8.5
+offset_right = 18.0
+offset_bottom = 48.5
+
+[node name="Label4" parent="." instance=ExtResource("7_167vu")]
+offset_left = -377.0
+offset_top = 88.0
+offset_right = -79.0
+offset_bottom = 111.0
+text = "Watch Out for disappearing Platforms"
+
+[node name="TextureRect" parent="Label4" index="0"]
+offset_left = -22.0
+offset_top = -35.5
+offset_right = 18.0
+offset_bottom = 4.5
+flip_v = false
+
+[node name="Label6" parent="." instance=ExtResource("7_167vu")]
+offset_left = -590.0
+offset_top = 72.0
+offset_right = -292.0
+offset_bottom = 95.0
+text = "Exit"
+
+[node name="TextureRect" parent="Label6" index="0"]
+offset_left = -146.0
+offset_top = -36.5
+offset_right = -106.0
+offset_bottom = 3.5
+flip_v = false
+
+[node name="Label5" parent="." instance=ExtResource("7_167vu")]
+offset_left = -434.0
+offset_top = 182.0
+offset_right = -136.0
+offset_bottom = 205.0
+text = "Go Back to get back up"
+
+[node name="TextureRect" parent="Label5" index="0"]
+offset_left = -44.0
+offset_top = -41.5
+offset_right = -4.0
+offset_bottom = -1.5
+rotation = 1.5708
+flip_v = false
+
+[editable path="Label"]
+[editable path="Label2"]
+[editable path="Label3"]
+[editable path="Label4"]
+[editable path="Label6"]
+[editable path="Label5"]

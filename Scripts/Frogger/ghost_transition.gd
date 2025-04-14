@@ -32,5 +32,7 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(fade_out)
 		fade_out.fade_out()
 		await fade_out.fade_completed
-		get_tree().change_scene_to_file("res://Scenes/game.tscn")
+		var next = Sound.main_theme
+		Sound.change_music(next)
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")
 		queue_free()

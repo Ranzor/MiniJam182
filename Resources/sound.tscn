@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://p1bqpumg32xp"]
+
+[ext_resource type="AudioStream" uid="uid://c2qvgji1kgnr7" path="res://Resources/main_theme.wav" id="1_m3r8r"]
+[ext_resource type="Script" uid="uid://d4ex2y3lkuegy" path="res://Resources/sound.gd" id="1_uxjhy"]
+[ext_resource type="AudioStream" uid="uid://d3mx7srfr3boy" path="res://Resources/frogger_track.wav" id="2_qol8p"]
+
+[node name="Sound" type="AudioListener2D" node_paths=PackedStringArray("audio")]
+script = ExtResource("1_uxjhy")
+frogger_theme = ExtResource("2_qol8p")
+main_theme = ExtResource("1_m3r8r")
+audio = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qol8p")
+volume_db = -10.0

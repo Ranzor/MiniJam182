@@ -8,6 +8,7 @@ signal released
 @export var require_heavy = true
 @export var anim : AnimationPlayer
 
+
 var is_active = false
 
 

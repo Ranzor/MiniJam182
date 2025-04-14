@@ -11,6 +11,8 @@ const SPEED = 100
 
 @export var ghost_trail_scene : PackedScene
 
+@export var audio : AudioStreamPlayer
+
 var active_arrows : Array[Node] = []
 
 var can_possess = false
@@ -24,6 +26,10 @@ func _ready() -> void:
 	if camera:
 		camera.make_current()
 		CameraManager.current_camera = camera
+	
+	
+	Global.state = Global.PossessionState.GHOST
+	Global.color_scheme = Global.ColorScheme.GHOST
 	
 	Global.connect("color_scheme_changed", update_color)
 	update_color()
@@ -82,6 +88,8 @@ func possess_frog(frog):
 	Global.last_possession_time = Time.get_ticks_msec()
 	frog.possessed = true
 	frog.camera.make_current()
+	frog.audio.stream = frog.sfx_possess
+	frog.audio.play()
 	
 
 	
@@ -93,7 +101,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		can_possess = false
 		possess_target = null
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("possess") and can_possess:
 		possess_frog(possess_target)
 		

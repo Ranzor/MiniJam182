@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ewdt730a8s3t"]
+[gd_scene load_steps=13 format=3 uid="uid://ewdt730a8s3t"]
 
 [ext_resource type="Script" uid="uid://8usmoa0xk5kr" path="res://Scripts/frog.gd" id="1_4ygq6"]
 [ext_resource type="Texture2D" uid="uid://b3d1bhknswuyn" path="res://Sprites/Frog.png" id="1_85unm"]
 [ext_resource type="Texture2D" uid="uid://wh7upuo5f34g" path="res://Sprites/TongueEnd.png" id="2_c3muq"]
+[ext_resource type="AudioStream" uid="uid://8mod1fka82kb" path="res://Resources/ghostspawn.wav" id="2_xvrdk"]
+[ext_resource type="AudioStream" uid="uid://dn1pu42h6ibfc" path="res://Resources/jumpfrg.wav" id="3_hdff1"]
+[ext_resource type="AudioStream" uid="uid://c3xk7ogr3gfi2" path="res://Resources/tongue.wav" id="4_kbuj8"]
 
 [sub_resource type="Animation" id="Animation_c3muq"]
 length = 0.001
@@ -82,12 +85,16 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmq7c"]
 size = Vector2(16, 13)
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("camera", "anim", "sprite") groups=["frog"]]
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("camera", "anim", "sprite", "audio") groups=["frog"]]
 collision_layer = 2
 script = ExtResource("1_4ygq6")
 camera = NodePath("Camera2D")
 anim = NodePath("FrogSprite/AnimationPlayer")
 sprite = NodePath("FrogSprite")
+audio = NodePath("AudioStreamPlayer")
+sfx_possess = ExtResource("2_xvrdk")
+sfx_jmp = ExtResource("3_hdff1")
+sfx_atk = ExtResource("4_kbuj8")
 
 [node name="TongueLine" type="Line2D" parent="."]
 unique_name_in_owner = true
@@ -116,3 +123,5 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_kmq7c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

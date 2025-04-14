@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://Scripts/Global.gd"
 LevelManager="*res://Scripts/LevelManager.gd"
 CameraManager="*res://Scripts/camera_manager.gd"
+Sound="*res://Resources/sound.tscn"
 
 [display]
 

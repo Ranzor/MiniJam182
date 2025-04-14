@@ -13,6 +13,12 @@ extends CharacterBody2D
 @export var anim : AnimationPlayer
 @export var sprite : Sprite2D
 
+@export var audio : AudioStreamPlayer
+@export var sfx_possess : AudioStreamWAV
+@export var sfx_jmp : AudioStreamWAV
+@export var sfx_atk : AudioStreamWAV
+
+
 var on_platform = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var possessed = false
@@ -61,6 +67,8 @@ func _process(delta: float) -> void:
 			
 			var spawn = Global.ghost_scene.instantiate()
 			spawn.global_position = global_position + Vector2(0,-16)
+			audio.stream = sfx_possess
+			audio.play()
 			get_tree().current_scene.add_child(spawn)
 			CameraManager.transition_to(spawn.camera)
 	else:
@@ -109,10 +117,14 @@ func _input(event: InputEvent) -> void:
 			
 func try_jump():
 	if is_on_floor():
+		audio.stream = sfx_jmp
+		audio.play()
 		velocity.y = Global.BASE_JUMP_FORCE
 		if Global.FrogAbilities.JUMP_HIGH in abilities:
 			current_jumps = 1
 	elif Global.FrogAbilities.JUMP_HIGH in abilities and current_jumps > 0:
+		audio.stream = sfx_jmp
+		audio.play()
 		velocity.y = Global.BASE_JUMP_FORCE * 0.8
 		current_jumps -= 1
 		
@@ -131,6 +143,8 @@ func tongue_attack():
 	var direction = Vector2.LEFT if sprite.flip_h else Vector2.RIGHT
 	var hit_result = detect_tongue_hit(direction)
 	var hit_point = hit_result.get("position", global_position + direction * max_tongue_length)
+	audio.stream = sfx_atk
+	audio.play()
 	
 	if hit_result.has("collider"):
 		var target = hit_result["collider"]

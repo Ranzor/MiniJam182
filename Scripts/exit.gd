@@ -3,7 +3,7 @@ extends Area2D
 @export var next_level : PackedScene
 @export var sprite : Sprite2D
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.modulate = Color("00FFFF")
 
 

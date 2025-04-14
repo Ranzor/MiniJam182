@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://kqny2g6obc8t"]
+[gd_scene load_steps=12 format=3 uid="uid://kqny2g6obc8t"]
 
 [ext_resource type="Texture2D" uid="uid://ce1j1mqikutbx" path="res://Sprites/Ghost.png" id="1_3mxmt"]
 [ext_resource type="Script" uid="uid://dh8kj4fkiy7d6" path="res://Scripts/ghost.gd" id="1_e3r4w"]
 [ext_resource type="PackedScene" uid="uid://b8vxrt454tyx3" path="res://Scenes/arrow_indicator.tscn" id="2_108wt"]
 [ext_resource type="PackedScene" uid="uid://d1xnni1rlem3a" path="res://Scenes/ghost_trail.tscn" id="3_3btnm"]
+[ext_resource type="AudioStream" uid="uid://8mod1fka82kb" path="res://Resources/ghostspawn.wav" id="5_taxxh"]
 
 [sub_resource type="Animation" id="Animation_108wt"]
 length = 0.001
@@ -67,7 +68,7 @@ size = Vector2(13, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_108wt"]
 size = Vector2(20, 30)
 
-[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("anim", "sprite", "camera")]
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("anim", "sprite", "camera", "audio")]
 z_index = 1
 collision_layer = 4
 collision_mask = 0
@@ -77,6 +78,7 @@ sprite = NodePath("Sprite2D")
 camera = NodePath("Camera2D")
 arrow_scene = ExtResource("2_108wt")
 ghost_trail_scene = ExtResource("3_3btnm")
+audio = NodePath("AudioStreamPlayer2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3mxmt")
@@ -100,6 +102,9 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_108wt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_taxxh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

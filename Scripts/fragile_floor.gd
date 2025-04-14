@@ -3,7 +3,7 @@ extends StaticBody2D
 @export var sprite : Sprite2D
 @export var anim : AnimationPlayer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.modulate = Global.current_colors[Global.color_scheme].primary
 	
 

@@ -13,5 +13,5 @@ func on_hit():
 		is_active = true
 	
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.modulate = Global.current_colors[Global.color_scheme].primary

@@ -32,7 +32,13 @@ var last_possession_time = 0
 var frogger_dead = false
 
 func refresh_color_scheme():
-	color_scheme_changed
+	color_scheme_changed.emit()
+	
+func reset_possession_state():
+	state = PossessionState.GHOST
+	color_scheme = ColorScheme.GHOST
+	current_possessed = null
+	last_possession_time = 0
 
 func _process(_delta: float) -> void:
 	RenderingServer.set_default_clear_color(current_colors[color_scheme].secondary)
